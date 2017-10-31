@@ -1,0 +1,35 @@
+
+<ion-view>
+  <ion-nav-title>
+    Carro Escolhido
+  </ion-nav-title>
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        Ótima Escolha
+      </div>
+      <div class="item item-text-wrap">
+        {{vmCarroEscolhido.carro.nome}} - R{{vmCarroEscolhido.carro.preco | currency}}
+
+        <ul class="list">
+          <li class="item item-toggle" ng-repeat="acessorio in vmCarroEscolhido.listaAcessorios">
+            {{acessorio.nome}} - R{{acessorio.preco | currency}}
+            <label class="toggle toggle-assertive">
+              <input type="checkbox" ng-model="acessorio.marcado" ng-click="vmCarroEscolhido.atualizarPreco(acessorio)">
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </li>
+        </ul>
+
+      </div>
+      <div class="item item-divider">
+        R{{vmCarroEscolhido.precoTotal | currency}}
+      </div>
+    </div>
+
+    <a class="button button-positive button-full" href="#/finalizar-pedido/{{vmCarroEscolhido.carro}}">Finalizar Pedido</a>
+
+  </ion-content>
+</ion-view>

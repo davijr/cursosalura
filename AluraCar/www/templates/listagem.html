@@ -3,7 +3,10 @@
   <ion-nav-title>Alura Car</ion-nav-title>
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="carro in vmListagem.listaCarros">{{carro.nome}}</ion-item>
+      <ion-item ng-repeat="carro in vmListagem.listaCarros"
+                href="#/carro-escolhido/{{carro}}">
+        {{carro.nome}} - R{{carro.preco | currency}}
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
