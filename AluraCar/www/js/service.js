@@ -7,7 +7,8 @@ function CarroService($http) {
 
   return {
     obterCarros : obterCarros,
-    salvarPedido : salvarPedido
+    salvarPedido : salvarPedido,
+    realizarLogin : realizarLogin
   }
 
   function obterCarros() {
@@ -19,6 +20,12 @@ function CarroService($http) {
   function salvarPedido(pedido) {
     return $http.get(URL + "/salvarpedido", pedido).then(function (retorno) {
       return "Deu certo!";
+    });
+  }
+
+  function realizarLogin(dadosLogin) {
+    return $http.get(URL + "/login", dadosLogin).then(function (retorno) {
+      return retorno;
     });
   }
 

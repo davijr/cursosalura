@@ -67,7 +67,7 @@ function FinalizarPedidoController($state, $stateParams, $ionicPopup, CarroServi
         title: "Parabéns!",
         template: "Você acaba de comprar um carro!"
       }).then(function () {
-        $state.go('listagem');
+        $state.go('app.listagem');
       });
 
     }, function (error) {
@@ -80,5 +80,54 @@ function FinalizarPedidoController($state, $stateParams, $ionicPopup, CarroServi
     });
 
   }
+
+}
+
+angular.module('starter').controller('LoginController', LoginController);
+
+function LoginController($state, $http, CarroService, $ionicPopup, $rootScope) {
+  var vmLogin = this;
+  vmLogin.login = {};
+  vmLogin.realizarLogin = realizarLogin;
+
+  function realizarLogin() {
+
+    var dadosLogin = {
+      params : {
+        email : vmLogin.login.email,
+        senha : vmLogin.login.senha
+      }
+    };
+
+    CarroService.realizarLogin(dadosLogin).then(function (retorno) {
+
+      $rootScope.usuario = retorno.usuario;
+
+      $ionicPopup.alert({
+        title: "Parabéns!",
+        template: "Logado com sucesso!"
+      }).then(function () {
+        $state.go('app.listagem');
+      });
+
+    }, function (error) {
+
+      $ionicPopup.alert({
+        title: "Opa!",
+        template: "E-mail ou senha incorretos."
+      });
+
+    });
+
+  }
+
+}
+
+angular.module('starter').controller('MenuController', MenuController);
+
+function MenuController($rootScope) {
+  var vmMenu = this;
+
+  vmMenu.usuario = $rootScope.usuario;
 
 }

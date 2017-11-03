@@ -1,0 +1,26 @@
+
+<ion-view>
+
+  <ion-header-bar>
+    <h2>Olá! Faça seu login.</h2>
+  </ion-header-bar>
+
+  <ion-content>
+    <form ng-submit="vmLogin.realizarLogin()">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <span class="input-label">Login</span>
+          <input type="text" ng-model="vmLogin.login.email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Senha</span>
+          <input type="password" ng-model="vmLogin.login.senha">
+        </label>
+        <button type="submit" class="button button-block button-positive">
+          Entrar
+        </button>
+      </div>
+    </form>
+  </ion-content>
+
+</ion-view>
